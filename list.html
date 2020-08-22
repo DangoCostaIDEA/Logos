@@ -39,10 +39,11 @@
         class ArticleList extends HTMLElement {
             constructor() {
                 super();
+                var shadow = this.attachShadow({ mode: 'closed' });
 
                 var templateElem = document.getElementById('articleListTemplate');
                 var content = templateElem.content.cloneNode(true);
-                this.appendChild(content);
+                shadow.appendChild(content);
             }
         }
         window.customElements.define('article-list', ArticleList);
