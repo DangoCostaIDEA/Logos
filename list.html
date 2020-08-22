@@ -5,24 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>见字-list</title>
+    <style>
+        .container {
+            display: grid;
+            place-items: center;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>见字    </h1>
-    <ul>
-        <li>
-            <a href="detail.html">
-                <span>历史：</span>
-                1906年-夏目漱石-《草枕》  
-            </a>
-        </li>
-        <li>
-            <a href="detail.html">
-                <span>理想：</span>
-                日语平假名
-            </a>
-        </li>
-    </ul>
+    <div class="container">
+        <h1>见字</h1>
+        <article-list></article-list>
+        <template id="articleListTemplate">
+            <ul>
+                <li>
+                    <a href="detail.html">
+                        <span>历史：</span>
+                        1906年-夏目漱石-《草枕》
+                    </a>
+                </li>
+                <li>
+                    <a href="detail.html">
+                        <span>理想：</span>
+                        日语平假名
+                    </a>
+                </li>
+            </ul>
+        </template>
+    </div>
+
+    <script>
+        class ArticleList extends HTMLElement {
+            constructor() {
+                super();
+
+                var templateElem = document.getElementById('articleListTemplate');
+                var content = templateElem.content.cloneNode(true);
+                this.appendChild(content);
+            }
+        }
+        window.customElements.define('article-list', ArticleList);
+    </script>
 </body>
 
 </html>
